@@ -1,0 +1,3 @@
+ENVIRONMENT=pro
+SERVICE_NAME=generic-api-javascript
+NODE_API_PORT=3000

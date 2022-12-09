@@ -1,0 +1,11 @@
+const path = require("path");
+const config = {};
+config.ROOT_DIRECTORY = __dirname + '/';
+require("dotenv").config({ path: path.join(config.ROOT_DIRECTORY, ".env") });
+config.ENVIRONMENT = process.env.ENVIRONMENT;
+config.SERVICE_NAME = process.env.SERVICE_NAME;
+config.SERVICE_ALIAS = config.ENVIRONMENT + '-' + config.SERVICE_NAME;
+config.NODE_API_PORT = process.env.NODE_API_PORT;
+config.PM2_LOGS =  config.ROOT_DIRECTORY + "logs/" + config.SERVICE_ALIAS + ".log";
+config.MORGAN_LOGS = config.ROOT_DIRECTORY + "logs/" + config.SERVICE_ALIAS + "-requests.log";
+module.exports = config;
