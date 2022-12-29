@@ -4,7 +4,7 @@ module.exports = {
     apps: [
         {
             name: config.SERVICE_ALIAS,
-            script: "app.js",
+            script: "index.js",
             autorestart: true,
             max_restarts: 1,
             restart_delay: 1000,
