@@ -1,3 +1,11 @@
 ENVIRONMENT=pro
 SERVICE_NAME=generic-api-javascript
 NODE_API_PORT=3000
+
+# MYSQL_HOST=host_url
+# MYSQL_USER=user_name
+# MYSQL_PASSWORD=password_value
+# MYSQL_DB=database_name
+
+SWAGGER_URL_SECRET=p2ae58zf
+SWAGGER_SERVER_DOC=http://127.0.0.1:3000

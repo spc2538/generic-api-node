@@ -2,6 +2,8 @@
 const config = require("./config");
 require("express-group-routes");
 const fs = require("fs");
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
 const morgan = require("morgan");
 const accessLogStream = fs.createWriteStream(config.MORGAN_LOGS, {
     flags: "a",
@@ -10,6 +12,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
+
+
+const specsApi = swaggerJsDoc(config.SWAGGER_GUI);
+var swaggerHtml = swaggerUI.generateHTML(specsApi, config.SWAGGER_GUI);
+app.use(config.SWAGGER_URL, swaggerUI.serveFiles(specsApi, config.SWAGGER_GUI));
+app.get(config.SWAGGER_URL, (req, res) => { res.send(swaggerHtml) });
+
 app.use(morgan("combined", { stream: accessLogStream }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -27,7 +36,7 @@ var allowCrossDomain = function (req, res, next) {
 app.use(cors());
 app.use(allowCrossDomain);
 app.set("view engine", "ejs");
-require('./routes/index')(app);
+require('./routes/test.route')(app);
 app.use(function (req, res, next) {
     res.status(404);
     if (req.accepts('html')) {
