@@ -18,6 +18,7 @@ module.exports = {
                 "views",
                 "README.md",
                 "docs",
+                "database.db*"
             ],
             watch_options: {
                 followSymlinks: false,
